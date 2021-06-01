@@ -16,4 +16,10 @@ export function calculateTotal(amount, term) {
     // 6 - 10%
     // 12 - 15%
     // 24 - 20%
+    let totalTerm = term === 3 ? amount * .05 :
+                    term === 6 ? amount * .1 :
+                    term === 12 ? amount * .15 :
+                    term === 24 ? amount * .2 : .5
+    
+    return amount + totalTerm + totalAmount;
 }

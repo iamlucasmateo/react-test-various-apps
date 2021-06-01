@@ -31,10 +31,9 @@ h1 {
   padding: 1rem;
   border-radius: 1rem;
   margin-top: 2rem;
-  height: 80vh;
 }
 
-form {
+form, .messages {
   padding: 2rem;
   max-width: 600px;
   margin: 0 auto;
@@ -51,4 +50,18 @@ input[type=submit] {
 
 input[type=submit]:disabled {
   opacity: .5;
+}
+
+.messages {
+  text-align: center;
+}
+
+.result {
+  border: 2px solid #00b0d7;
+  padding: 1rem 0;
+  border-radius: 20px;
+}
+
+.result > p {
+  margin-bottom: 20px;
 }
