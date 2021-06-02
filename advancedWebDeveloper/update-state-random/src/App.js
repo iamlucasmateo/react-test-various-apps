@@ -21,18 +21,59 @@ class App extends React.Component {
       }
     ],
     selected: '',
+    moreOptions: true,
   }
-  
+
   updateState = () => {
     const instructorsAux = this.state.instructors;
     const randomInstructorIdx = Math.floor( Math.random() * 4 );
-    const randomHobbyIdx = Math.floor( Math.random() * 2 )
+    const randomInstructor = instructorsAux[randomInstructorIdx]; 
+    const selectedLen = randomInstructor.hobbies.length;
+    if (selectedLen === 0) {
+      const lengthSum = this.state.instructors.reduce((accum,current,idx) => {
+        let lenItems = current.hobbies.length;
+        return accum + lenItems;
+      }, 0);
+      if (lengthSum === 0) this.setState({selected: 'No more options', moreOptions: false})
+      else this.updateState();
+    } else {
+      let hobbyIdx = selectedLen ===  1 ? 0 : (Math.random() > 0.5 ? 0 : 1)  
+      this.setState({
+        selected: `${randomInstructor.name}__${randomInstructor.hobbies[hobbyIdx]}`,
+      })
+      instructorsAux[randomInstructorIdx].hobbies = (
+        randomInstructor.hobbies.filter((hobby, idx) => {
+          return idx !== hobbyIdx;
+        })
+      );
+      this.setState({
+        instructors: instructorsAux,
+      });
+    } 
+  }
+
+  resetState = () => {
     this.setState({
-      selected: `${instructorsAux[randomInstructorIdx].name}__${instructorsAux[randomInstructorIdx].hobbies[randomHobbyIdx]}`,
-    })
-    instructorsAux[randomInstructorIdx].hobbies = instructorsAux[randomInstructorIdx].hobbies.splice(randomHobbyIdx, 1);
-    this.setState({
-      instructors: instructorsAux,
+      instructors: [
+        {
+          name: 'Juan',
+          hobbies: ['pescar', 'pasear'],
+        },
+        {
+          name: 'Pedro',
+          hobbies: ['manejar', 'cocinar'],
+        },
+        {
+          name: 'Matilde',
+          hobbies: ['correr', 'programar']
+        },
+        {
+          name: 'Fermina',
+          hobbies: ['masajear', 'Blackjack']
+        }
+      ],
+      selected: '',
+      moreOptions: true,
     });
   }
 
@@ -63,8 +104,15 @@ class App extends React.Component {
         >
           Click Me
         </button>
-        <p>{this.state.selected}</p>
         
+        <p>{this.state.moreOptions ? 'Last Deleted: ' : ''}{this.state.selected}</p>
+
+        <button
+          onClick={this.resetState}
+        >
+          Reset
+        </button>
+  
       </div>
     );
   }
