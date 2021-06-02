@@ -1,5 +1,16 @@
 import React from 'react';
 
+const InstructorItem = props => (
+  <li key={props.index} style={{margin: '0 20px'}}>
+      <p>{props.name}</p>
+      <ul>
+          {props.hobbies.map((hobby, idx)=> {
+              return <li key={idx}>{hobby}</li>
+          })}
+      </ul>
+  </li>
+)
+
 class App extends React.Component {
   state = {
     instructors: [
@@ -87,14 +98,12 @@ class App extends React.Component {
           {
             this.state.instructors.map((instructor, index)=> {
               return (
-                <li key={index} style={{margin: '0 20px'}}>
-                  <p>{instructor.name}</p>
-                  <ul>
-                    {instructor.hobbies.map((hobby, index)=> {
-                      return <li key={index}>{hobby}</li>
-                    })}
-                  </ul>
-                </li>
+                <InstructorItem
+                  key={index}
+                  index={index}
+                  name={instructor.name}
+                  hobbies={instructor.hobbies}
+                />
               )
             })
           }
