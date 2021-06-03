@@ -1,0 +1,27 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: coral;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-links li {
+    padding: 5px;
+}
+
+.new-recipe {
+    cursor:pointer;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+    background-color:darkcyan;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Card from './Card';
 
-const COLORS = ['red', 'yellow', 'blue', 'green', 'pink'];
+const COLORS = ['red', 'yellow', 'blue', 'green', 'pink', 'salmon', 'turquoise'];
 
 const getRandomColor = colors => {
     return colors[Math.floor( Math.random() * colors.length )]
@@ -16,7 +16,7 @@ const getMatches = (array, item) => {
 
 const getNewList = () => {
     const colorList = [];
-    while (colorList.length < 10) {
+    while (colorList.length < COLORS.length * 2) {
         let newColor = getRandomColor(COLORS);
         while (getMatches(colorList, newColor) === 2) newColor = getRandomColor(COLORS);
         colorList.push(newColor);
@@ -70,13 +70,6 @@ class MemoryGame extends Component {
             selectedCard: this.getSelectedCard(index),
             firstTurn: false,
         });
-    }
-
-    deleteFeedback = () => {
-        this.setState({
-            waiting: false,
-            message: '',
-        })
     }
 
     handleSecondTurn = index => {

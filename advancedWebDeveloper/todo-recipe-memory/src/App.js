@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
-import ToDo from './ToDo';
-// import Recipe from '.Recipe';
-import MemoryGame from './MemoryGame';
-import Card from './Card'
+import ToDo from './Components/ToDo';
+import RecipeApp from './Components/RecipeApp';
+import MemoryGame from './Components/MemoryGame';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <ToDo/>
-        <MemoryGame/>
-        {/* <Card
-          hidden={true}
-          color='pink'
-        /> */}
+        <div>
+          <h2>Recipe App</h2>
+          <RecipeApp/>
+        </div>
+        <div style={{borderTop: '2px solid black'}}>
+          <h2>Todo list</h2>
+          <ToDo/>
+        </div>
+        <div style={{borderTop: '2px solid black'}}>
+          <MemoryGame/>
+        </div>
+        
       </div>
     );
   }
