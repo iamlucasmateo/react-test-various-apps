@@ -84,10 +84,9 @@ class AddRecipeCard extends Component {
                     </div>
                     
                     <div className="recipe-form-item">
-                        <label htmlFor="recipeingredients">Recipe Ingredients</label>
+                        <label htmlFor="ingredient">Recipe Ingredients</label>
                         <input 
                             type="text" 
-                            name="recipe-ingredients"
                             value={this.state.ingredient}
                             onChange={this.inputChangeHandler}
                             name="ingredient"
